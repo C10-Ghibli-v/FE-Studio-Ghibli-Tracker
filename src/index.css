@@ -1,3 +1,15 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+:root {
+    --dark: #30363D;
+    --primary: #F27A54;
+    --secondary: #A154F2;
+    --grey-hard: #3C444C;
+    --grey-soft: #747D88;
+    --grey-light: #CBCFD4;
+}
+body {
+    background-color: var(--dark);
+}
