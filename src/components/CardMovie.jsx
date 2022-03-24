@@ -1,3 +1,5 @@
+/* Este archivo contiene la estructura de la card, sin embargo su función por el momento la realiza el componente GetData
+*/
 import React from "react";
 const DEFAULT_IMAGE =
   "https://www.nacionrex.com/__export/1515916465717/sites/debate/img/2018/01/14/foto_de_portada_perros.jpg_172596871.jpg";
