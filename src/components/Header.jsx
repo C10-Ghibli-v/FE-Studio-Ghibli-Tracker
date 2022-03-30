@@ -5,7 +5,7 @@ import search from '../assets/icons/search.png'
 
 const Header = () => {
   return ( 
-    <nav className='p-3 w-screen bg-slate-800'>
+    <nav className='p-3 w-full bg-slate-800'>
         <ul className='flex'>
             <li className='w-1/6 flex justify-start items-center'>
                 <a href="/"><img src={back} alt="back" className="w-5"/></a>
