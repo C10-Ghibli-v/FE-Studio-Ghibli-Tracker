@@ -6,7 +6,6 @@ import Header from "../components/Header";
 const MoviesList = () => {
   return (
     <div>
-      <Header />
       <GetData />
     </div>
   );

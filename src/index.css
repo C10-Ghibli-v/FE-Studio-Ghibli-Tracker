@@ -13,3 +13,21 @@
 body {
     background-color: var(--dark);
 }
+
+.Search{
+        position: fixed;
+        padding: 13px 10px;
+        background-color: #30363D;
+        top: 0;
+        font-size: 18px;
+        color: #000000;
+        border-radius: 0.3rem;
+        box-shadow: 0 10px 3 px rgba(0 0 0 / 0.15);
+
+    }
+
+
+nav .p-3 .w-full .bg-slate-800{
+    position: fixed;
+    top: 0;
+}

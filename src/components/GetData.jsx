@@ -1,9 +1,10 @@
-import react, {useState, useEffect} from "react";
+import react, {useState, useEffect, useMemo, useRef, useCallback} from "react";
+import Header from "./Header";
 
 function GetData() {
 
     const apiUrl = "https://ghibli-trackers-movies.herokuapp.com/movies"
-    const [todos, setTodos] = useState()
+    const [todos, setTodos] = useState();
     const traerDatos = async () => {
 
         const response = await fetch(apiUrl)
@@ -12,14 +13,30 @@ function GetData() {
         console.log(responseJSON);
     };
 
+    const [search, setSearch] = useState('');
+
+    const handleSearch = useCallback(() => {
+        setSearch(searchInput.current.value);
+    }, [])
+
+    const searchInput = useRef(null);
+    const filteredUsers = useMemo(() =>
+    todos && todos.filter((user) => {
+        return user.name.toLowerCase().includes(search.toLowerCase());
+    }), 
+        [todos, search]  
+    )
+
     useEffect(() => {
         traerDatos();
       }, [])
     
     return (
+    <div>
+    <Header search={search} searchInput={searchInput} handleSearch={handleSearch}/>
     <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         { !todos ? 'Cargando...':
-            todos.map( (todo, index) => {
+            filteredUsers.map( (todo, index) => {
             return (
                 <div className="grid justify-center my-5">
                     <div className="w-[300px] rounded-lg overflow-hidden border-2 border-white">
@@ -45,6 +62,7 @@ function GetData() {
                 )
             })
         }
+    </div>
     </div>
     );
 };
