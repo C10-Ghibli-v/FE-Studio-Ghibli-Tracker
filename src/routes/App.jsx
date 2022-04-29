@@ -5,7 +5,7 @@ import MoviesList from '../pages/MoviesList'
 function App() {
   return (
     <div>
-      <MoviesList />
+      <Home />
     </div>
   )
 }
