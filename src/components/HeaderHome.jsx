@@ -12,12 +12,12 @@ const HeaderHome = () => {
             <li className='flex'>
                 
                 <a href='../src/pages/MoviesList.jsx'>
-                <button className="bg-white hover:bg-gray-300 text-black font-bold px-2 rounded shadow">Iniciar sesión</button>
+                <button className="bg-white hover:bg-gray-300 text-black px-2 font-bold rounded shadow p-2 m-1 hover:">Iniciar sesión</button>
                 </a>
             </li>
             <li className='flex'>
                 <a href="/">
-                <button className="bg-orange-600 hover:bg-orange-500 text-white font-bold px-2 rounded shadow">Registrarse</button>
+                <button className="bg-gradient-to-r from-orange-500 to-violet-600 hover:bg-orange-400 text-white font-bold px-2 rounded shadow p-2 m-1">Registrarse</button>
                 </a>
             </li>
         </ul>
