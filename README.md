@@ -1,7 +1,8 @@
 # FE-Studio-Ghibli-Tracker
 Frontend con React.js de la aplicación  de Ghibli 
-que permite visualizar el listado de películas que 
-produce Studio Ghibli
+que permite visualizar el catálogo de películas que 
+produce Studio Ghibli, para ampliar esta información
+ingresa a: https://platziteam.notion.site/Studio-Ghibli-Tracker-718f46d673554116bd429355d1c280c1
 
 ## Comenzando 🚀
 Para usar la aplicación en tu equipo tienes que 
@@ -28,7 +29,7 @@ y ejecutar los siguiente comandos
 * Jesús Vásquez
 
 ## Cómo contribuir 📄
-Puedes crear un pull request al proyecto
+Puedes realizar un fork para trabajar en los avances y luego crear un pull request al proyecto
 
 ## Expresiones de gratitud 🎁
 * Comenta a otros sobre este proyecto 📢
