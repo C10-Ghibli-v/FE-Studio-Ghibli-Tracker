@@ -1,12 +1,24 @@
-import React from 'react';
-import Home from './Home';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "../pages/Home";
+import Login from "../pages/Login";
+import MoviesList from "../pages/MoviesList";
+import Signup from "../pages/Signup";
 
 function App() {
   return (
-    <div>
-      <Home />
-    </div>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<MoviesList />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        {/* <Route path="/MoviesList" element={<MoviesList />} /> */}
+        {/* <Route path="/CardMovie" element={<CardMovie />} /> */}
+        {/* <Route path="/User" element={<User />} /> */}
+        <Route path="*" element={<Navigate replace to="/" />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
