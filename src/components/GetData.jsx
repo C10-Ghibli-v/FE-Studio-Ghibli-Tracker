@@ -1,71 +1,60 @@
-import React, {useState, useEffect, useMemo, useRef, useCallback} from "react";
-import { Link } from "react-router-dom";
+import React, {
+  useState,
+  useEffect,
+  useMemo,
+  useRef,
+  useCallback,
+} from "react";
 import HeaderMovie from "./HeaderMovie";
+import CardMovie from "../components/CardMovie";
 
 function GetData() {
+  const apiUrl = "https://vast-chamber-00684.herokuapp.com/movies";
+  const [movies, setMovies] = useState();
+  const traerDatos = async () => {
+    const response = await fetch(apiUrl);
+    const responseJSON = await response.json();
+    setMovies(responseJSON.data);
+    console.log(responseJSON);
+  };
 
-    const apiUrl = "https://vast-chamber-00684.herokuapp.com/movies"
-    const [movies, setMovies] = useState();
-    const traerDatos = async () => {
+  const [search, setSearch] = useState("");
 
-        const response = await fetch(apiUrl)
-        const responseJSON = await response.json();
-        setMovies(responseJSON.data);
-        console.log(responseJSON);
-    };
+  const handleSearch = useCallback(() => {
+    setSearch(searchInput.current.value);
+  }, []);
 
-    const [search, setSearch] = useState('');
-
-    const handleSearch = useCallback(() => {
-        setSearch(searchInput.current.value);
-    }, [])
-
-    const searchInput = useRef(null);
-    const filteredUsers = useMemo(() =>
-    movies && movies.filter((user) => {
+  const searchInput = useRef(null);
+  const filteredUsers = useMemo(
+    () =>
+      movies &&
+      movies.filter((user) => {
         return user.title.toLowerCase().includes(search.toLowerCase());
-    }), 
-        [movies, search]  
-    )
-    useEffect(() => {
-        traerDatos();
-      }, [])
-    
-    return (
-    <><div>
-        <HeaderMovie search={search} searchInput={searchInput} handleSearch={handleSearch}/>
+      }),
+    [movies, search]
+  );
+  useEffect(() => {
+    traerDatos();
+  }, []);
+
+  return (
+    <>
+      <div>
+        <HeaderMovie
+          search={search}
+          searchInput={searchInput}
+          handleSearch={handleSearch}
+        />
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        { !movies ? 'Cargando...':
-            filteredUsers.map( (movie, index) => {
-            return (
-                <div className="grid justify-center my-5">
-                    <div className="w-[300px] rounded-lg overflow-hidden border-2 border-white">
-                        <img className="w-full object-cover <!--aspect-[4/5]-->" src={movie.image}/>
-                        <div className="grid text-white p-3">
-                            <div className="flex justify-between truncate">
-                                <h3 className="text-lg font-bold p-1 truncate" >{movie.title}</h3>
-                                <p className="p-1">{movie.stars}⭐</p>
-                            </div>
-                            <div className="flex">
-                                <p className="self-center p-1">Rotten Tomatoes 🍅: </p>
-                                <p className="self-center p-1">{movie.rtScore} % </p>
-                            </div>
-                            <p className="text-sm self-center p-1">Duration: {movie.duration} min</p>
-                            <div className="flex justify-between items-center">
-                                <p className="text-sm self-center p-1">Year: {movie.releaseDate}</p>
-                                <Link to="/CardMovie">
-                                <button className="bg-white hover:bg-gray-400 text-black font-semibold px-2 border border-gray-400 rounded shadow">Ver más</button>
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                )
-            })
-        }
+          {!movies
+            ? "Cargando..."
+            : filteredUsers.map((movie) => {
+                return <CardMovie key={movie._id} {...movie} />;
+              })}
         </div>
-    </div></>
-    );
-};
+      </div>
+    </>
+  );
+}
 
 export default GetData;
