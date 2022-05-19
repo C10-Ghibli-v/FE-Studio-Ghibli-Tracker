@@ -8,15 +8,15 @@ const Header = () => {
     <nav className="p-3 w-full bg-slate-800">
       <ul className="flex">
         <li className="w-1/6 flex justify-start items-center">
-          <Link to="/MoviesList">
+          <Link to={-1}>
             <img src={back} alt="back" className="w-5" />
           </Link>
         </li>
         <li className="barra"></li>
         <li className="flex items-right justify-end w-5/6">
-          <a href="/">
+          <Link to="/">
             <img src={account} alt="perfil" className="w-7" />
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>
